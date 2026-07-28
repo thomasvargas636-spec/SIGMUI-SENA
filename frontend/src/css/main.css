@@ -1,0 +1,7 @@
+/* Central stylesheet — imports design tokens, base layout and component styles */
+
+@import "./variables.css";
+@import "./layout.css";
+
+@import "./components/navbar/navbarGlobal.css";
+@import "./components/sidebar/principalSidebar.css";

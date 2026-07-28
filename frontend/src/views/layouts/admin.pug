@@ -1,0 +1,22 @@
+//- Base layout for all admin panel pages
+//- Extended by every page under views/pages/
+//- Expects locals: `title` (string), `user` ({ name, role, avatarUrl }), `currentRoute` (string)
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title ? `${title} · Parkalia` : "Parkalia"
+    link(rel="stylesheet" href="/css/main.css")
+
+  body
+    include ../components/navbar/navbarGlobal.pug
+
+    .layout
+      include ../components/sidebar/principalSidebar.pug
+
+      main.content
+        block content
+
+    script(type="module" src="/js/main.js")

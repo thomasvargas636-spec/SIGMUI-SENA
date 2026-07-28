@@ -1,0 +1,24 @@
+/* General layout structure for the admin panel */
+/* Positions the sidebar and main content area below the navbar */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - 64px);
+}
+
+.content {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-x: hidden;
+}
