@@ -1,0 +1,61 @@
+//- Main admin sidebar navigation
+//- Included from layouts/admin.pug
+//- Expects a `currentRoute` local (string) to highlight the active link
+
+aside.principalSidebar
+  ul.principalSidebar__list
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/dashboard"
+        class=currentRoute === "dashboard" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --dashboard
+        span.principalSidebar__label Dashboard
+
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/zones"
+        class=currentRoute === "zones" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --zone
+        span.principalSidebar__label Zones
+
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/vehicles"
+        class=currentRoute === "vehicles" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --vehicle
+        span.principalSidebar__label Vehicles
+
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/reservations"
+        class=currentRoute === "reservations" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --reservation
+        span.principalSidebar__label Reservations
+
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/payments"
+        class=currentRoute === "payments" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --payment
+        span.principalSidebar__label Payments
+
+    li.principalSidebar__item
+      a.principalSidebar__link(
+        href="/users"
+        class=currentRoute === "users" ? "is-active" : ""
+      )
+        span.principalSidebar__icon --users
+        span.principalSidebar__label Users
+
+  .principalSidebar__footer
+    a.principalSidebar__link(
+      href="/settings"
+      class=currentRoute === "settings" ? "is-active" : ""
+    )
+      span.principalSidebar__icon --settings
+      span.principalSidebar__label Settings

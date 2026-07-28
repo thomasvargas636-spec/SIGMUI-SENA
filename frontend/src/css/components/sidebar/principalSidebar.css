@@ -1,0 +1,78 @@
+/* Main admin sidebar navigation */
+
+.principalSidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 240px;
+  height: calc(100vh - 64px);
+  padding: var(--space-5) var(--space-3);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  position: sticky;
+  top: 64px;
+  transition: transform var(--transition-base);
+}
+
+.principalSidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.principalSidebar__item {
+  width: 100%;
+}
+
+.principalSidebar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.principalSidebar__link:hover {
+  background: var(--bg-surface-alt);
+  color: var(--text-primary);
+}
+
+.principalSidebar__link.is-active {
+  background: var(--primary-800);
+  color: var(--primary-200);
+}
+
+.principalSidebar__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  /* icon set to be wired once we pick an icon library */
+}
+
+.principalSidebar__footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .principalSidebar {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-sidebar);
+  }
+
+  body.sidebarOpen .principalSidebar {
+    transform: translateX(0);
+  }
+}

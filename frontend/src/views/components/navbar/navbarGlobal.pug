@@ -1,0 +1,31 @@
+//- Global top navigation bar
+//- Included from layouts/admin.pug
+//- Expects a `user` local: { name, role, avatarUrl }
+
+nav.navbarGlobal
+  .navbarGlobal__brand
+    a(href="/") 
+      span.navbarGlobal__logo Parkalia
+    button.navbarGlobal__menuToggle(type="button" aria-label="Toggle sidebar")
+      span.navbarGlobal__menuIcon
+
+  .navbarGlobal__actions
+    button.navbarGlobal__iconBtn(type="button" aria-label="Notifications")
+      span.navbarGlobal__icon --notification
+      span.navbarGlobal__badge 3
+
+    .navbarGlobal__userMenu
+      button.navbarGlobal__userTrigger(type="button" aria-haspopup="true" aria-expanded="false")
+        img.navbarGlobal__avatar(src=user.avatarUrl alt=user.name)
+        .navbarGlobal__userInfo
+          span.navbarGlobal__userName= user.name
+          span.navbarGlobal__userRole= user.role
+        span.navbarGlobal__chevron
+
+      ul.navbarGlobal__dropdown(hidden)
+        li
+          a.navbarGlobal__dropdownItem(href="/profile") My Profile
+        li
+          a.navbarGlobal__dropdownItem(href="/settings") Settings
+        li
+          button.navbarGlobal__dropdownItem.navbarGlobal__logoutBtn(type="button") Log Out
