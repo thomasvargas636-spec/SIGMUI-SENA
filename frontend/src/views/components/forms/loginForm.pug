@@ -1,0 +1,54 @@
+//- Login form component
+//- Included from pages/auth/loginView.pug
+//- Expects an optional `errorMessage` local (string)
+
+.loginPage__brand
+  span.loginPage__logoIcon
+    svg(viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+      path(d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z" fill="url(#pinGradient)")
+      text(x="12" y="13" text-anchor="middle" font-size="9" font-weight="700" fill="#0B1120") P
+      defs
+        linearGradient#pinGradient(x1="4" y1="2" x2="20" y2="22")
+          stop(offset="0" stop-color="var(--primary-400)")
+          stop(offset="1" stop-color="var(--secondary-400)")
+  span.loginPage__logoText
+    | PARK
+    span.loginPage__logoAccent ALIA
+
+.loginForm
+  .loginForm__header
+    h1.loginForm__title Iniciar sesión
+    p.loginForm__subtitle Accede a tu cuenta de forma segura
+
+  form.loginForm__form(method="POST" action="/auth/login" novalidate)
+    if errorMessage
+      .loginForm__alert= errorMessage
+
+    .loginForm__field
+      label.loginForm__label(for="email") Correo electrónico
+      input.loginForm__input(
+        type="email"
+        id="email"
+        name="email"
+        placeholder="usuario@ejemplo.com"
+        required
+      )
+      span.loginForm__fieldError(data-error-for="email")
+
+    .loginForm__field
+      .loginForm__labelRow
+        label.loginForm__label(for="password") Contraseña
+        a.loginForm__link(href="/auth/forgot-password") ¿Olvidé mi contraseña?
+      input.loginForm__input(
+        type="password"
+        id="password"
+        name="password"
+        placeholder="••••••••"
+        required
+        minlength="8"
+      )
+      span.loginForm__fieldError(data-error-for="password")
+
+    hr.loginForm__divider
+
+    button.loginForm__submit(type="submit") Ingresar

@@ -1,3 +1,6 @@
+/* ===== IMPORTACIÓN DE FUENTES (Obligatorio para que cargue Syne y DM Sans) ===== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
+
 :root {
   /* ===== COLOR: PRIMARY (Blue #1A6FD4) ===== */
   --primary-50:  #EAF2FC;
@@ -46,19 +49,19 @@
 
   /* ===== SURFACES (dark theme) ===== */
   --bg-base:        var(--gray-950);
-  --bg-surface:      var(--gray-900);
-  --bg-surface-alt:   var(--gray-800);
-  --border-color:      var(--gray-700);
+  --bg-surface:     var(--gray-900);
+  --bg-surface-alt: var(--gray-800);
+  --border-color:   var(--gray-700);
 
   /* ===== TEXT ===== */
   --text-primary:    var(--gray-50);
-  --text-secondary:   var(--gray-300);
-  --text-muted:        var(--gray-500);
-  --text-on-primary:   var(--gray-50);
+  --text-secondary:  var(--gray-300);
+  --text-muted:      var(--gray-500);
+  --text-on-primary: var(--gray-50);
 
   /* ===== TYPOGRAPHY ===== */
   --font-heading: 'Syne', sans-serif;
-  --font-body:     'DM Sans', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 
   --fs-xs:   0.75rem;
   --fs-sm:   0.875rem;

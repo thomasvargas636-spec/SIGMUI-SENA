@@ -1,0 +1,183 @@
+body {
+  background-color: var(--bg-base);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Login page brand */
+.loginPage__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.loginPage__logoIcon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+}
+
+.loginPage__logoIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loginPage__logoText {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.loginPage__logoAccent {
+  color: var(--secondary-400);
+}
+
+/* Login form card */
+.loginForm {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+}
+
+.loginForm__header {
+  margin-bottom: var(--space-6);
+}
+
+.loginForm__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: 800; /* Forzamos un grosor alto óptimo para Syne */
+  font-size: var(--fs-2xl);
+  color: var(--text-primary);
+  line-height: 1.15; /* Evita que las letras se encimen verticalmente */
+  letter-spacing: -0.02em; /* Corrige el espacio excesivo horizontal de la fuente */
+}
+
+.loginForm__subtitle {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.loginForm__alert {
+  background: rgba(224, 72, 58, 0.12);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-4);
+}
+
+.loginForm__field {
+  margin-bottom: var(--space-5);
+}
+
+.loginForm__labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.loginForm__label {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.loginForm__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--fs-base);
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.loginForm__input::placeholder {
+  color: var(--gray-500); /* Color exacto y visible para placeholders */
+  opacity: 1;
+}
+
+.loginForm__input:focus {
+  outline: none;
+  border-color: var(--primary-400);
+}
+
+.loginForm__input.is-invalid {
+  border-color: var(--color-error);
+}
+
+.loginForm__fieldError {
+  display: none;
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+}
+
+.loginForm__fieldError.is-visible {
+  display: block;
+}
+
+.loginForm__link {
+  font-size: var(--fs-xs);
+  color: var(--primary-400);
+  text-decoration: none;
+}
+
+.loginForm__link:hover {
+  text-decoration: underline;
+}
+
+.loginForm__divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: var(--space-6) 0;
+}
+
+.loginForm__submit {
+  width: 100%;
+  padding: var(--space-3);
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-400));
+  color: var(--text-on-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.loginForm__submit:hover {
+  opacity: 0.9;
+}
+
+.loginForm__submit:disabled {
+  background: var(--gray-600);
+  cursor: not-allowed;
+}

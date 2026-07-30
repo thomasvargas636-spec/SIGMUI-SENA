@@ -1,0 +1,17 @@
+//- Minimal layout for authentication pages (login, register, password reset)
+//- No navbar/sidebar — just a centered card on a full-height background
+//- Expects a `title` local (string)
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title ? `${title} · Parkalia` : "Parkalia"
+    link(rel="stylesheet" href="/css/main.css")
+
+  body.authLayout
+    .authLayout__wrapper
+      block content
+
+    script(type="module" src="/js/main.js")
