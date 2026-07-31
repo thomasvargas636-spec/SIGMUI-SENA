@@ -1,0 +1,56 @@
+//- Reservation cancellation success card
+//- Included from pages/reservations/cancelReservationView.pug
+//- Expects:
+//- reservation: { id, zone, date, status }
+
+article.cancelSuccessCard
+
+  .cancelSuccessCard__header
+
+    .cancelSuccessCard__step
+      include ../../icons/successIcon.pug
+
+    h2.cancelSuccessCard__title Reserva cancelada
+
+  .cancelSuccessCard__content
+
+    .cancelSuccessCard__icon
+      include ../../icons/successIcon.pug
+
+    h3.cancelSuccessCard__heading
+      | Reserva cancelada
+
+    p.cancelSuccessCard__description
+      | El cupo ha sido liberado correctamente.
+
+  .cancelSuccessCard__details
+
+    p
+      strong Código:
+      |  #{reservation.id}
+
+    p
+      strong Zona:
+      |  #{reservation.zone}
+
+    p
+      strong Fecha:
+      |  #{reservation.date}
+
+    p
+      strong Estado:
+
+      span.cancelSuccessCard__status
+        | Cancelada
+
+  .cancelSuccessCard__releasedSpace
+
+    span +1 cupo liberado en #{reservation.zone}
+
+  .cancelSuccessCard__actions
+
+    button.cancelSuccessCard__reservationsButton(type="button")
+      | Ver reservas
+
+    button.cancelSuccessCard__homeButton(type="button")
+      | Inicio

@@ -1,0 +1,54 @@
+//- Reservation cancellation confirmation card
+//- Included from pages/reservations/cancelReservationView.pug
+//- Expects:
+//- reservation: { id, zone, date, duration, price }
+
+article.cancelConfirmationCard
+
+  .cancelConfirmationCard__header
+
+    .cancelConfirmationCard__step
+      include ../../icons/warningIcon.pug
+
+    h2.cancelConfirmationCard__title Confirmar cancelación
+
+  .cancelConfirmationCard__icon
+    include ../../icons/trashIcon.pug
+
+  h3.cancelConfirmationCard__heading Cancelar reserva
+
+  p.cancelConfirmationCard__message
+    | ¿Estás seguro de cancelar esta reserva?
+    br
+    | El cupo será liberado automáticamente.
+
+  .cancelConfirmationCard__details
+
+    p
+      strong Código:
+      |  #{reservation.id}
+
+    p
+      strong Zona:
+      |  #{reservation.zone}
+
+    p
+      strong Fecha:
+      |  #{reservation.date}
+
+  .cancelConfirmationCard__warning
+
+    include ../../icons/warningIcon.pug
+
+    span Esta acción no se puede deshacer.
+
+  .cancelConfirmationCard__actions
+
+    button.cancelConfirmationCard__backButton(type="button")
+      | Volver
+
+    button.cancelConfirmationCard__confirmButton(
+      type="button"
+      data-id=reservation.id
+    )
+      | Sí, cancelar

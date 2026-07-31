@@ -8,3 +8,5 @@
 @import "./components/sidebar/principalSidebar.css";
 @import "./components/forms/loginForm.css";
 @import "./components/cards/reservationCard.css";
+@import "./components/cards/cancelConfirmationCard.css";
+@import "./components/cards/cancelSuccessCard.css";

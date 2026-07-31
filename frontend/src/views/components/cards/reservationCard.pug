@@ -1,6 +1,7 @@
 //- Reservation card component
+//- Included from pages/reservations/cancelReservationView.pug
 //- Expects:
-//- reservation: {
+//- reservation {
 //-   id,
 //-   status,
 //-   zone,
@@ -8,6 +9,8 @@
 //-   duration,
 //-   price
 //- }
+//- Optional:
+//- buttonLabel
 
 article.reservationCard
 
@@ -15,16 +18,24 @@ article.reservationCard
 
     span.reservationCard__code= reservation.id
 
-    span.reservationCard__status= reservation.status
+    span.reservationCard__status(class=`reservationCard__status--${reservation.status}`)
+      = reservation.status
 
   .reservationCard__body
 
-    p.reservationCard__zone= reservation.zone
+    dl.reservationCard__information
 
-    p.reservationCard__date= reservation.date
+      dt.reservationCard__label Zona
 
-    p.reservationCard__details
-      | #{reservation.duration} · #{reservation.price}
+      dd.reservationCard__value= reservation.zone
+
+      dt.reservationCard__label Fecha
+
+      dd.reservationCard__value= reservation.date
+
+      dt.reservationCard__label Duración
+
+      dd.reservationCard__value #{reservation.duration} · #{reservation.price}
 
   .reservationCard__footer
 
@@ -33,7 +44,7 @@ article.reservationCard
       data-id=reservation.id
     )
 
-      span.reservationCard__icon
+      span.reservationCard__buttonIcon
         include ../../icons/trashIcon.pug
 
-      span Cancelar reserva
+      span.reservationCard__buttonLabel= buttonLabel || 'Cancelar reserva'
