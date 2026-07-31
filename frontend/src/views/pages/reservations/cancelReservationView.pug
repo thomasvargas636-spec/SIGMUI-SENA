@@ -1,0 +1,30 @@
+//- Reservation cancellation page
+//- Extends the main admin layout
+//- Displays the reservation cancellation workflow
+
+extends ../../layouts/admin
+
+block content
+
+  section.cancelReservation
+
+    header.cancelReservation__header
+
+      h1.cancelReservation__title Cancelación de reservas
+
+      p.cancelReservation__description
+        | Selecciona una reserva activa para cancelarla.
+
+    section.cancelReservation__workflow
+
+      .cancelReservation__step.cancelReservation__step--list
+
+        include ../../components/cards/reservationCard.pug
+
+      .cancelReservation__step.cancelReservation__step--confirmation
+
+        include ../../components/cards/cancelConfirmationCard.pug
+
+      .cancelReservation__step.cancelReservation__step--success
+
+        include ../../components/cards/cancelSuccessCard.pug

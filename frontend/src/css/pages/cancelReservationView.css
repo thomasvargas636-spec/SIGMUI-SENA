@@ -1,0 +1,35 @@
+.cancelReservation {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.cancelReservation__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.cancelReservation__title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-2xl);
+    color: var(--text-primary);
+}
+
+.cancelReservation__description {
+    color: var(--text-secondary);
+}
+
+.cancelReservation__workflow {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-5);
+
+    flex-wrap: wrap;
+}
+
+.cancelReservation__step {
+    flex: 1;
+    max-width: 380px;
+}

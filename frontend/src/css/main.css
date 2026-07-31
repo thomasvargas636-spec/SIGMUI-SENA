@@ -10,3 +10,4 @@
 @import "./components/cards/reservationCard.css";
 @import "./components/cards/cancelConfirmationCard.css";
 @import "./components/cards/cancelSuccessCard.css";
+@import "./pages/cancelReservationView.css";
