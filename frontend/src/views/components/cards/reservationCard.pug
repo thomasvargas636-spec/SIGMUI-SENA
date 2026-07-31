@@ -1,0 +1,39 @@
+//- Reservation card component
+//- Expects:
+//- reservation: {
+//-   id,
+//-   status,
+//-   zone,
+//-   date,
+//-   duration,
+//-   price
+//- }
+
+article.reservationCard
+
+  .reservationCard__header
+
+    span.reservationCard__code= reservation.id
+
+    span.reservationCard__status= reservation.status
+
+  .reservationCard__body
+
+    p.reservationCard__zone= reservation.zone
+
+    p.reservationCard__date= reservation.date
+
+    p.reservationCard__details
+      | #{reservation.duration} · #{reservation.price}
+
+  .reservationCard__footer
+
+    button.reservationCard__button(
+      type="button"
+      data-id=reservation.id
+    )
+
+      span.reservationCard__icon
+        include ../../icons/trashIcon.pug
+
+      span Cancelar reserva

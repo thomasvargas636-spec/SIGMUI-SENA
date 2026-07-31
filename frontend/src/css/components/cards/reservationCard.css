@@ -1,0 +1,93 @@
+.reservationCard {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-4);
+
+    padding: var(--space-4);
+
+    background: var(--bg-base);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-md);
+
+    transition: var(--transition-base);
+}
+
+.reservationCard:hover {
+
+    border-color: var(--color-error);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.reservationCard__header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.reservationCard__code {
+
+    font-weight: var(--fw-bold);
+
+    color: var(--primary-500);
+}
+
+.reservationCard__status {
+
+    font-size: var(--fs-sm);
+}
+
+.reservationCard__body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-2);
+
+    color: var(--text-secondary);
+}
+
+.reservationCard__footer {
+
+    margin-top: var(--space-2);
+}
+
+.reservationCard__button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: var(--space-2);
+
+    width: 100%;
+
+    padding: var(--space-3);
+
+    border: 1px solid var(--color-error);
+
+    border-radius: var(--radius-md);
+
+    background: transparent;
+
+    color: var(--color-error);
+
+    cursor: pointer;
+
+    transition: var(--transition-base);
+}
+
+.reservationCard__button:hover {
+
+    background: rgba(224,72,58,.12);
+}
