@@ -1,0 +1,18 @@
+mixin reservationTable()
+  .filtros
+    button.filtro-btn.active(data-filter="todas") Todas
+    button.filtro-btn(data-filter="pagada") Pagadas
+    button.filtro-btn(data-filter="pendiente") Pendientes
+    button.filtro-btn(data-filter="cancelado") Canceladas
+
+  .tabla-card
+    .tabla-header
+      span CÓDIGO
+      span ZONA
+      span VEHÍCULO
+      span FECHA
+      span DURACIÓN
+      span MONTO
+      span ESTADO
+    .tabla-body#reservationTableBody
+      // Se renderiza dinámicamente mediante JS

@@ -1,0 +1,6 @@
+mixin historySummary(cards)
+  .resumen-cards
+    each card in cards
+      .resumen-card
+        h2(id=card.id, class=card.classText)= card.value || 0
+        p= card.label

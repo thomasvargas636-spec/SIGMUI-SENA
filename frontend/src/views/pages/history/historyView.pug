@@ -1,0 +1,29 @@
+extends ../../layouts/admin.pug
+
+block prepend styles
+  link(rel="stylesheet", href="/css/components/cards/historySummary.css")
+  link(rel="stylesheet", href="/css/components/tables/reservationTable.css")
+
+block content
+  include ../../components/cards/historySummary.pug
+  include ../../components/tables/reservationTable.pug
+
+  section.content
+    h1 Mi Historial
+    br
+    p.sub Con historial
+
+    //- Datos estructurales mockeados para inicializar el componente de resúmenes
+    - 
+      var summaryData = [
+        { id: 'totalReservas', label: 'Total reservas', classText: '' },
+        { id: 'totalPagadas', label: 'Pagadas', classText: 'text-green' },
+        { id: 'totalPendientes', label: 'Pendientes', classText: 'text-yellow' },
+        { id: 'totalCanceladas', label: 'Canceladas', classText: 'text-red' }
+      ]
+    
+    +historySummary(summaryData)
+    +reservationTable()
+
+block append scripts
+  script(src="/js/components/tables/reservationTable.js")

@@ -1,0 +1,105 @@
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filtro-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #21262D;
+  background: transparent;
+  color: #BB949E;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.filtro-btn:hover, .filtro-btn.active {
+  border-color: #1A6FD4;
+  color: #1A6FD4;
+}
+
+.filtro-btn.active {
+  background: rgba(26, 111, 212, 0.1);
+}
+
+.tabla-card {
+  width: 100%;
+  background: #161B22;
+  border: 1px solid #21262D;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tabla-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 15px;
+  border-bottom: 1px solid #21262D;
+  color: #BB949E;
+  font-size: 12px;
+  font-family: 'Syne', sans-serif;
+}
+
+.tabla-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 15px;
+  border-bottom: 1px solid #21262D;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.fila:hover {
+  background: #21262D;
+  transition: 0.2s;
+}
+
+.fila:last-child {
+  border-bottom: none;
+}
+
+.codigo {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid #1A6FD4;
+  background: rgba(26, 111, 212, 0.15);
+  color: #1A6FD4;
+  font-size: 12px;
+}
+
+.estado {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+  width: fit-content;
+}
+
+.estado-pagada { border: 1px solid #238636; background: rgba(35, 134, 54, 0.15); color: #2ea043; }
+.estado-pendiente { border: 1px solid #facc15; background: rgba(250, 204, 21, 0.15); color: #facc15; }
+.estado-cancelado { border: 1px solid #DA3633; background: rgba(218, 54, 51, 0.15); color: #ff6b6b; }
+
+.monto { font-weight: bold; }
+.monto.pagada { color: #4CAF50; }
+.monto.pendiente { color: #facc15; }
+.monto.cancelado { color: #ff3b3b; }
+
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: #BB949E;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  background: #161B22;
+  border: 1px dashed #21262D;
+  border-radius: 12px;
+}
