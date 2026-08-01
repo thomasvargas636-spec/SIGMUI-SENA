@@ -1,6 +1,6 @@
 extends ../../layouts/admin.pug
 
-block prepend styles
+block styles
   link(rel="stylesheet", href="/css/components/cards/historySummary.css")
   link(rel="stylesheet", href="/css/components/tables/reservationTable.css")
 
@@ -13,17 +13,17 @@ block content
     br
     p.sub Con historial
 
-    //- Datos estructurales mockeados para inicializar el componente de resúmenes
+    //- Configuración de las tarjetas
     - 
-      var summaryData = [
+      var cardsConfig = [
         { id: 'totalReservas', label: 'Total reservas', classText: '' },
         { id: 'totalPagadas', label: 'Pagadas', classText: 'text-green' },
         { id: 'totalPendientes', label: 'Pendientes', classText: 'text-yellow' },
         { id: 'totalCanceladas', label: 'Canceladas', classText: 'text-red' }
       ]
     
-    +historySummary(summaryData)
+    +historySummary(cardsConfig)
     +reservationTable()
 
-block append scripts
+block scripts
   script(src="/js/components/tables/reservationTable.js")

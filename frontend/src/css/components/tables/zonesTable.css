@@ -1,0 +1,50 @@
+/* ── TABLE ZONAS ── */
+.table-card {
+  background: var(--card); 
+  border: 1px solid var(--border);
+  border-radius: 12px; 
+  overflow: hidden;
+  animation: fadeUp 0.4s ease both;
+}
+
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
+
+th {
+  padding: 12px 16px; text-align: left;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted);
+}
+
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+td { padding: 13px 16px; font-size: 13px; }
+
+/* ── ID BADGE & SPOTS BAR ── */
+.id-badge {
+  display: inline-flex; align-items: center;
+  padding: 3px 8px;
+  background: var(--blue-soft);
+  border: 1px solid rgba(26,111,212,0.2);
+  border-radius: 5px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  color: var(--blue); letter-spacing: 1px;
+}
+
+.spots-bar {
+  width: 80px; height: 4px;
+  background: var(--border); border-radius: 2px;
+  overflow: hidden; display: inline-block;
+  vertical-align: middle; margin-right: 6px;
+}
+.spots-fill { height: 100%; border-radius: 2px; }
+.action-btns { display: flex; gap: 6px; }
+
+/* ── EMPTY STATE ── */
+.empty-state { padding: 48px; text-align: center; }
+.empty-icon { font-size: 40px; margin-bottom: 14px; }
+.empty-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.empty-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }

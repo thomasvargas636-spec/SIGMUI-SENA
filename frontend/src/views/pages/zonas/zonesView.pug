@@ -1,0 +1,90 @@
+extends ../../layouts/admin.pug
+
+block styles
+  //- Inyectamos únicamente los estilos que necesita esta vista
+  link(rel="stylesheet", href="/css/components/tables/zonesTable.css")
+  link(rel="stylesheet", href="/css/components/forms/zoneForm.css")
+  link(rel="stylesheet", href="/css/components/modals/deleteModal.css")
+
+block content
+  .success-msg.hidden#success-msg
+
+  //- ── PANTALLA: LISTA DE ZONAS ──
+  .content#screen-list
+    .section-header
+      div
+        .section-title Gestión de Zonas
+        .section-sub Administra las zonas de parqueo del sistema
+      button.btn-primary#btn-show-form ＋ Nueva Zona
+
+    .table-card
+      table#zones-table
+        thead
+          tr
+            th ID
+            th Nombre
+            th Dirección
+            th Capacidad
+            th Estado
+            th Acciones
+        tbody#zones-body
+          //- Carga dinámica por JS
+
+      .empty-state.hidden#empty-state
+        .empty-icon ⬡
+        .empty-title No hay zonas registradas
+        .empty-sub Agrega la primera zona de parqueo al sistema
+        button.btn-primary#btn-empty-add ＋ Nueva Zona
+
+  //- ── PANTALLA: FORMULARIO ──
+  .content.hidden#screen-form
+    a.back-link#btn-back ← Volver a Gestión de Zonas
+
+    .form-card
+      .form-card-title
+        .dot
+        span#form-card-title Nueva Zona de Parqueo
+      
+      input(type="hidden", id="edit-index", value="-1")
+
+      .fields-grid
+        .field
+          label Nombre de la zona
+          input(type="text", id="zone-name", placeholder="ej. Zona Centro A")
+          .error#zone-name-error
+        
+        .field
+          label Dirección
+          input(type="text", id="zone-address", placeholder="ej. Calle 15 #8-20")
+          .error#zone-address-error
+        
+        .field
+          label Capacidad máxima
+          input(type="number", id="zone-capacity", placeholder="ej. 20", min="1", max="500")
+          .error#zone-capacity-error
+
+      .field
+        label Estado
+        select#zone-status
+          option(value="active") Activa
+          option(value="inactive") Inactiva
+
+      .form-actions
+        button.btn-secondary#btn-cancel Cancelar
+        button.btn-primary#btn-save Guardar Zona
+
+  //- ── MODAL: ELIMINACIÓN ──
+  .modal-overlay.hidden#delete-modal
+    .modal-card
+      .modal-icon 🗑️
+      .modal-title ¿Eliminar Zona de Parqueo?
+      .modal-desc Esta acción no se puede deshacer. Se removerá la zona del sistema permanentemente.
+      .modal-zone-info#modal-zone-name ZONA_NAME_PLACEHOLDER
+      .modal-warning ⚠️ Advertencia: Asegúrate de que no existan vehículos activos en esta zona.
+      
+      .modal-actions
+        button.btn-modal-cancel#btn-modal-close Cancelar
+        button.btn-modal-delete#btn-modal-confirm Eliminar
+
+block scripts
+  script(src="/js/hu09-script.js")

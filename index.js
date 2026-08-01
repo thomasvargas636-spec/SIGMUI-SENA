@@ -40,6 +40,14 @@ app.get("/dashboard", (req, res) => {
   });
 });
 
+app.get("/history", (req, res) => {
+  res.render("pages/history/historyView", {
+    title: "Historial de Reservas",
+    user: defaultUser,
+    currentRoute: "history", 
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

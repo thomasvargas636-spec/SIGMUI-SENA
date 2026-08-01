@@ -1,0 +1,61 @@
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px;
+  max-width: 720px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.form-card-title {
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
+  margin-bottom: 20px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  flex-shrink: 0;
+}
+
+.fields-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+
+.field { margin-bottom: 4px; }
+.field label {
+  display: block; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px;
+}
+
+.field input, .field select {
+  width: 100%; padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  outline: none; transition: border-color 0.2s;
+}
+.field input:focus, .field select:focus { border-color: var(--blue); }
+
+.field input.input-error { border-color: var(--danger); }
+.field input.input-success { border-color: rgba(61,190,108,0.4); }
+
+.error {
+  font-size: 11px; color: var(--danger);
+  margin-top: 5px; min-height: 16px;
+}
+.error:empty { display: none; }
+
+.form-actions {
+  display: flex; gap: 10px;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  margin-top: 16px;
+}
+.back-link {
+  display: inline-block; font-size: 13px;
+  color: var(--blue); text-decoration: none;
+  margin-bottom: 20px; cursor: pointer;
+}
