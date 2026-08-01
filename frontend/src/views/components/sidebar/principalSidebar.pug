@@ -2,60 +2,79 @@
 //- Included from layouts/admin.pug
 //- Expects a `currentRoute` local (string) to highlight the active link
 
-aside.principalSidebar
-  ul.principalSidebar__list
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/dashboard"
-        class=currentRoute === "dashboard" ? "is-active" : ""
-      )
-        span.principalSidebar__icon --dashboard
-        span.principalSidebar__label Dashboard
+aside.w-64.bg-gray-950.border-r.border-gray-800.flex.flex-col.h-full.hidden(class="md:flex")
+  .flex.items-center.gap-3.px-4.py-5.border-b.border-gray-800
+    //- Logo placeholder if no image exists
+    .w-9.h-9.bg-gradient-to-br.from-primary-500.to-secondary-500.rounded-lg.flex.items-center.justify-center.text-white.font-heading.font-extrabold P
+    .font-heading.font-extrabold.text-base Parka
+      span.text-secondary-400 lia
 
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/zones"
-        class=currentRoute === "zones" ? "is-active" : ""
+  ul.flex-1.py-4.px-3.flex.flex-col.gap-1.m-0.list-none.overflow-y-auto
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/vehiculos"
+        class=currentRoute === "vehiculos" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
       )
-        span.principalSidebar__icon --zone
-        span.principalSidebar__label Zones
+        span.text-lg 🚗
+        span Vehículos
 
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/vehicles"
-        class=currentRoute === "vehicles" ? "is-active" : ""
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/zonas"
+        class=currentRoute === "zonas" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
       )
-        span.principalSidebar__icon --vehicle
-        span.principalSidebar__label Vehicles
+        span.text-lg ⬡
+        span Zonas
 
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/reservations"
-        class=currentRoute === "reservations" ? "is-active" : ""
+    li.px-2.mt-4.mb-2
+      span.text-xs.font-semibold.tracking-wider.uppercase.text-gray-500 Actividad
+
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/reservaciones"
+        class=currentRoute === "reservaciones" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
       )
-        span.principalSidebar__icon --reservation
-        span.principalSidebar__label Reservations
+        span.text-lg 📋
+        span Reservaciones
 
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/payments"
-        class=currentRoute === "payments" ? "is-active" : ""
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/pagos"
+        class=currentRoute === "pagos" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
       )
-        span.principalSidebar__icon --payment
-        span.principalSidebar__label Payments
+        span.text-lg 💳
+        span Pagos
 
-    li.principalSidebar__item
-      a.principalSidebar__link(
-        href="/users"
-        class=currentRoute === "users" ? "is-active" : ""
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/historial"
+        class=currentRoute === "historial" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
       )
-        span.principalSidebar__icon --users
-        span.principalSidebar__label Users
+        span.text-lg 🕐
+        span Historial
 
-  .principalSidebar__footer
-    a.principalSidebar__link(
-      href="/settings"
-      class=currentRoute === "settings" ? "is-active" : ""
-    )
-      span.principalSidebar__icon --settings
-      span.principalSidebar__label Settings
+    li.px-2.mt-4.mb-2
+      span.text-xs.font-semibold.tracking-wider.uppercase.text-gray-500 Sistema
+
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/usuarios"
+        class=currentRoute === "usuarios" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
+      )
+        span.text-lg 👥
+        span Usuarios
+
+    li
+      a.flex.items-center.gap-3.px-3.py-2.rounded-lg.text-sm.transition-colors.no-underline(
+        href="/configuracion"
+        class=currentRoute === "configuracion" ? "bg-primary-500 bg-opacity-10 text-primary-400 font-medium" : "text-gray-400 hover:bg-gray-900 hover:text-gray-50 font-normal"
+      )
+        span.text-lg ⚙️
+        span Configuración
+
+  .p-4.border-t.border-gray-800
+    .flex.items-center.gap-3.p-2.bg-gray-900.rounded-lg
+      .w-8.h-8.rounded-full.bg-gradient-to-br.from-primary-500.to-secondary-500.flex.items-center.justify-center.text-xs.font-bold.text-white.font-heading TV
+      .flex-1
+        .text-xs.font-medium.text-gray-50 T_vxrgs
+        .text-xs.text-gray-400 Ciudadano
