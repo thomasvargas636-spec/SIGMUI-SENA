@@ -1,6 +1,4 @@
 //- Reservation cancellation page
-//- Extends the main admin layout
-//- Displays the reservation cancellation workflow
 
 extends ../../layouts/admin
 
@@ -19,7 +17,9 @@ block content
 
       .cancelReservation__step.cancelReservation__step--list
 
-        include ../../components/cards/reservationCard.pug
+        h2.cancelReservation__stepTitle Seleccionar reserva
+
+        .cancelReservation__reservationsContainer
 
       .cancelReservation__step.cancelReservation__step--confirmation
 

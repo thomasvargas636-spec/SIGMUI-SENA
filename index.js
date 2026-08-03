@@ -40,6 +40,15 @@ app.get("/dashboard", (req, res) => {
   });
 });
 
+app.get("/reservations/cancel", (req, res) => {
+  res.render("pages/reservations/cancelReservationView", {
+    title: "Cancelación de reservas",
+    user: defaultUser,
+    currentRoute: "reservations",
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
