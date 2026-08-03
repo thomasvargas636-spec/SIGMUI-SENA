@@ -2,30 +2,32 @@
 //- Included from layouts/admin.pug
 //- Expects a `user` local: { name, role, avatarUrl }
 
-nav.navbarGlobal
-  .navbarGlobal__brand
-    a(href="/") 
-      span.navbarGlobal__logo Parkalia
-    button.navbarGlobal__menuToggle(type="button" aria-label="Toggle sidebar")
-      span.navbarGlobal__menuIcon
+nav.h-16.bg-gray-950.border-b.border-gray-800.flex.items-center.justify-between.px-6.flex-shrink-0
+  .flex.items-center.gap-4
+    a.no-underline(href="/") 
+      span.font-heading.font-bold.text-xl.tracking-wide.text-gray-50 Parkalia
+    button.p-2.text-gray-400.transition-colors(class="md:hidden hover:text-gray-50" type="button" aria-label="Toggle sidebar")
+      span.block.w-5.h-0_5.bg-current.mb-1
+      span.block.w-5.h-0_5.bg-current.mb-1
+      span.block.w-5.h-0_5.bg-current
 
-  .navbarGlobal__actions
-    button.navbarGlobal__iconBtn(type="button" aria-label="Notifications")
-      span.navbarGlobal__icon --notification
-      span.navbarGlobal__badge 3
+  .flex.items-center.gap-4
+    button.relative.p-2.text-gray-400.transition-colors(class="hover:text-gray-50" type="button" aria-label="Notifications")
+      span.text-lg 🔔
+      span(class="absolute top-1 right-1 bg-error text-gray-50 text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none") 3
 
-    .navbarGlobal__userMenu
-      button.navbarGlobal__userTrigger(type="button" aria-haspopup="true" aria-expanded="false")
-        img.navbarGlobal__avatar(src=user.avatarUrl alt=user.name)
-        .navbarGlobal__userInfo
-          span.navbarGlobal__userName= user.name
-          span.navbarGlobal__userRole= user.role
-        span.navbarGlobal__chevron
+    .relative.group
+      button.flex.items-center.gap-3.text-left(type="button" aria-haspopup="true" aria-expanded="false")
+        img.w-10.h-10.rounded-full.object-cover.border-2.border-gray-800(src=user.avatarUrl alt=user.name)
+        div(class="hidden md:block")
+          span.block.text-sm.font-semibold.text-gray-50= user.name
+          span.block.text-xs.text-gray-400= user.role
+        span.text-gray-500.text-xs ▼
 
-      ul.navbarGlobal__dropdown(hidden)
+      ul.absolute.right-0.top-full.mt-2.w-48.bg-gray-900.border.border-gray-800.rounded-lg.shadow-lg.py-1.hidden.z-50(class="group-hover:block")
         li
-          a.navbarGlobal__dropdownItem(href="/profile") My Profile
+          a.block.px-4.py-2.text-sm.text-gray-300.transition-colors(class="hover:bg-gray-800 hover:text-gray-50" href="/profile") My Profile
         li
-          a.navbarGlobal__dropdownItem(href="/settings") Settings
+          a.block.px-4.py-2.text-sm.text-gray-300.transition-colors(class="hover:bg-gray-800 hover:text-gray-50" href="/settings") Settings
         li
-          button.navbarGlobal__dropdownItem.navbarGlobal__logoutBtn(type="button") Log Out
+          button.w-full.text-left.block.px-4.py-2.text-sm.text-error.transition-colors(class="hover:bg-gray-800" type="button") Log Out

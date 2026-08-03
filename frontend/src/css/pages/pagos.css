@@ -1,0 +1,9 @@
+/* Aquí puedes poner tus estilos personalizados, separados del archivo .pug */
+.payment-section {
+    /* Ejemplo de cómo usar tus variables CSS de padding y color */
+    padding: var(--spacing-4);
+    background-color: var(--bg-surface);
+}
+
+/* También puedes aplicar utilidades de Tailwind aquí usando @apply, pero en v4 esto requiere configuración extra 
+   (normalmente se hace solo escribiendo clases en el .pug) */

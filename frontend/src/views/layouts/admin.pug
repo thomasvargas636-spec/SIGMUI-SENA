@@ -8,15 +8,15 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title= title ? `${title} · Parkalia` : "Parkalia"
-    link(rel="stylesheet" href="/css/main.css")
+    link(rel="stylesheet" href="/css/output.css")
 
-  body
+  body.bg-gray-950.text-gray-50.font-body.flex.flex-col.min-h-screen
     include ../components/navbar/navbarGlobal.pug
 
-    .layout
+    .flex.flex-1.overflow-hidden
       include ../components/sidebar/principalSidebar.pug
 
-      main.content
+      main.flex-1.p-6.overflow-y-auto.bg-gray-900
         block content
 
     script(type="module" src="/js/main.js")

@@ -2,44 +2,46 @@
 //- Included from pages/auth/loginView.pug
 //- Expects an optional `errorMessage` local (string)
 
-.loginPage__brand
-  span.loginPage__logoIcon
-    svg(viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+.flex.items-center.justify-center.gap-2.mb-8
+  span.w-6.h-6.inline-flex
+    svg.w-full.h-full(viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
       path(d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z" fill="url(#pinGradient)")
       text(x="12" y="13" text-anchor="middle" font-size="9" font-weight="700" fill="#0B1120") P
       defs
         linearGradient#pinGradient(x1="4" y1="2" x2="20" y2="22")
-          stop(offset="0" stop-color="var(--primary-400)")
-          stop(offset="1" stop-color="var(--secondary-400)")
-  span.loginPage__logoText
+          stop(offset="0" stop-color="var(--color-primary-400)")
+          stop(offset="1" stop-color="var(--color-secondary-400)")
+  span.font-heading.font-bold.text-xl.tracking-wide.text-gray-50
     | PARK
-    span.loginPage__logoAccent ALIA
+    span.text-secondary-400 ALIA
 
-.loginForm
-  .loginForm__header
-    h1.loginForm__title Iniciar sesión
-    p.loginForm__subtitle Accede a tu cuenta de forma segura
+.bg-gray-900.border.border-gray-700.rounded-2xl.px-6.py-8.shadow-2xl.w-full
+  .mb-8
+    h1.m-0.mb-2.font-heading.font-extrabold.text-3xl.text-gray-50.leading-tight.tracking-tight Iniciar sesión
+    p.m-0.text-sm.text-gray-500 Accede a tu cuenta de forma segura
 
-  form.loginForm__form(method="POST" action="/auth/login" novalidate)
+  form(method="POST" action="/auth/login" novalidate)
     if errorMessage
-      .loginForm__alert= errorMessage
+      .bg-red-500.bg-opacity-10.border.border-error.text-error.rounded-lg.py-3.px-4.text-sm.mb-4= errorMessage
 
-    .loginForm__field
-      label.loginForm__label(for="email") Correo electrónico
-      input.loginForm__input(
+    .mb-6
+      label.block.text-xs.font-semibold.tracking-wider.uppercase.text-gray-300.mb-2(for="email") Correo electrónico
+      input.w-full.px-4.py-3.bg-gray-800.border.border-gray-700.rounded-lg.text-gray-50.text-base.font-body.transition-colors.duration-150.placeholder-gray-500(
+        class="focus:outline-none focus:border-primary-400"
         type="email"
         id="email"
         name="email"
         placeholder="usuario@ejemplo.com"
         required
       )
-      span.loginForm__fieldError(data-error-for="email")
+      span.hidden.text-xs.text-error.mt-1(data-error-for="email")
 
-    .loginForm__field
-      .loginForm__labelRow
-        label.loginForm__label(for="password") Contraseña
-        a.loginForm__link(href="/auth/forgot-password") ¿Olvidé mi contraseña?
-      input.loginForm__input(
+    .mb-6
+      .flex.items-center.justify-between.mb-2
+        label.block.text-xs.font-semibold.tracking-wider.uppercase.text-gray-300.m-0(for="password") Contraseña
+        a.text-xs.text-primary-400.no-underline(class="hover:underline" href="/auth/forgot-password") ¿Olvidé mi contraseña?
+      input.w-full.px-4.py-3.bg-gray-800.border.border-gray-700.rounded-lg.text-gray-50.text-base.font-body.transition-colors.duration-150.placeholder-gray-500(
+        class="focus:outline-none focus:border-primary-400"
         type="password"
         id="password"
         name="password"
@@ -47,8 +49,8 @@
         required
         minlength="8"
       )
-      span.loginForm__fieldError(data-error-for="password")
+      span.hidden.text-xs.text-error.mt-1(data-error-for="password")
 
-    hr.loginForm__divider
+    hr.border-0.border-t.border-gray-700.my-8
 
-    button.loginForm__submit(type="submit") Ingresar
+    button.w-full.p-3.bg-gradient-to-r.from-primary-500.to-secondary-400.text-gray-50.rounded-lg.text-base.font-semibold.font-body.cursor-pointer.transition-opacity.duration-150(class="hover:opacity-90 disabled:bg-gray-600 disabled:cursor-not-allowed" type="submit") Ingresar

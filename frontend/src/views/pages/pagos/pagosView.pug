@@ -1,0 +1,85 @@
+extends ../../layouts/admin.pug
+
+block content
+  link(rel="stylesheet", href="/css/pages/pagos.css")
+  
+  .flex.flex-col.items-center.py-10.px-4
+    .w-full.max-w-lg
+      h2.font-heading.text-3xl.font-extrabold.text-gray-50.mb-1 Realizar Pago
+      p.text-sm.text-gray-400.mb-8 Completa el pago para tu reserva activa
+
+      //- Paso 1: Resumen
+      .bg-gray-900.border.border-gray-800.rounded-xl.overflow-hidden.mb-6.transition-all.duration-300
+        .px-5.py-4.bg-gray-950.border-b.border-gray-800.flex.items-center.gap-3
+          .w-6.h-6.bg-secondary-500.rounded-full.flex.items-center.justify-center.text-xs.font-bold.text-white 1
+          h3.font-heading.text-sm.font-bold.text-gray-50 Resumen de reserva
+
+        .p-6
+          .flex.justify-between.items-center.mb-4.pb-4.border-b.border-gray-800
+            div
+              .text-sm.font-bold.text-gray-50.font-heading= zone.name
+              .text-xs.text-gray-400 2 horas (10:00 AM - 12:00 PM)
+            .text-sm.text-gray-50 $#{zone.price * 2}
+
+          .bg-primary-500.bg-opacity-10.border.border-primary-500.border-opacity-20.rounded-lg.px-5.py-4.flex.justify-between.items-center
+            span.font-heading.font-bold.text-[15px].text-gray-50 Total a pagar
+            span.font-heading.text-[26px].font-extrabold.text-secondary-400 $#{zone.price * 2}
+
+      //- Paso 2: Método de pago
+      .bg-gray-900.border.border-gray-800.rounded-xl.overflow-hidden.mb-6.transition-all.duration-300
+        .px-5.py-4.bg-gray-950.border-b.border-gray-800.flex.items-center.gap-3
+          .w-6.h-6.bg-secondary-500.rounded-full.flex.items-center.justify-center.text-xs.font-bold.text-white 2
+          h3.font-heading.text-sm.font-bold.text-gray-50 Método de pago
+
+        .p-6
+          .grid.grid-cols-2.gap-4.mb-6
+            label.cursor-pointer
+              input.peer.sr-only(type="radio" name="payment_method" value="card" checked)
+              .rounded-lg.border.border-gray-700.bg-gray-800.p-4.text-center.transition-all.peer-checked_border-primary-500.peer-checked_bg-primary-500.peer-checked_bg-opacity-10
+                .text-xl.mb-2 💳
+                .text-xs.font-bold.text-gray-50 Tarjeta de Crédito
+
+            label.cursor-pointer
+              input.peer.sr-only(type="radio" name="payment_method" value="pse")
+              .rounded-lg.border.border-gray-700.bg-gray-800.p-4.text-center.transition-all.peer-checked_border-primary-500.peer-checked_bg-primary-500.peer-checked_bg-opacity-10
+                .text-xl.mb-2 🏦
+                .text-xs.font-bold.text-gray-50 PSE / Transferencia
+
+          //- Formulario Tarjeta
+          #card-form.space-y-4
+            div
+              label.block.text-xs.font-medium.text-gray-400.mb-1 Número de tarjeta
+              input.w-full.bg-gray-950.border.border-gray-700.rounded-lg.px-4.py-2.5.text-sm.text-gray-50.focus_outline-none.focus_border-primary-500(type="text" placeholder="0000 0000 0000 0000")
+            
+            .grid.grid-cols-2.gap-4
+              div
+                label.block.text-xs.font-medium.text-gray-400.mb-1 Vencimiento
+                input.w-full.bg-gray-950.border.border-gray-700.rounded-lg.px-4.py-2.5.text-sm.text-gray-50.focus_outline-none.focus_border-primary-500(type="text" placeholder="MM/YY")
+              div
+                label.block.text-xs.font-medium.text-gray-400.mb-1 CVC
+                input.w-full.bg-gray-950.border.border-gray-700.rounded-lg.px-4.py-2.5.text-sm.text-gray-50.focus_outline-none.focus_border-primary-500(type="text" placeholder="123")
+            
+            div
+              label.block.text-xs.font-medium.text-gray-400.mb-1 Nombre en la tarjeta
+              input.w-full.bg-gray-950.border.border-gray-700.rounded-lg.px-4.py-2.5.text-sm.text-gray-50.focus_outline-none.focus_border-primary-500(type="text" placeholder="Ej. Juan Pérez")
+
+      //- Paso 3: Confirmación
+      .bg-gray-900.border.border-gray-800.rounded-xl.overflow-hidden.mb-8
+        .px-5.py-4.bg-gray-950.border-b.border-gray-800.flex.items-center.gap-3
+          .w-6.h-6.bg-secondary-500.rounded-full.flex.items-center.justify-center.text-xs.font-bold.text-white 3
+          h3.font-heading.text-sm.font-bold.text-gray-50 Confirmación
+
+        .p-6
+          button#submit-payment.w-full.bg-gradient-to-r.from-primary-500.to-secondary-500.text-white.font-bold.py-3.rounded-lg.shadow-lg.hover_opacity-90.transition-opacity
+            | Pagar $#{zone.price * 2}
+
+  //- Modal de Éxito
+  #success-modal.fixed.inset-0.bg-black.bg-opacity-80.hidden.items-center.justify-center.z-50.opacity-0.transition-opacity.duration-300
+    .bg-gray-900.border.border-gray-800.rounded-2xl.p-8.max-w-sm.w-full.text-center.transform.scale-95.transition-transform.duration-300
+      .w-16.h-16.bg-secondary-500.bg-opacity-20.rounded-full.flex.items-center.justify-center.mx-auto.mb-4
+        span.text-3xl ✅
+      h3.font-heading.text-xl.font-bold.text-gray-50.mb-2 ¡Pago Exitoso!
+      p.text-sm.text-gray-400.mb-6 Tu reserva en #{zone.name} ha sido confirmada.
+      a.block.w-full.bg-gray-800.hover_bg-gray-700.text-white.font-medium.py-2.5.rounded-lg.transition-colors.no-underline(href="/reservaciones") Ver mis reservas
+
+  script(src="/js/pages/pagos.js")
