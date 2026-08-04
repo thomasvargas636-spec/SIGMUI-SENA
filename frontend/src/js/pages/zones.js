@@ -143,9 +143,9 @@ class ZoneManager {
     }
 
     getZoneStatus(available) {
-        if (available === 0) return { text: 'Sin cupos', class: 'bg-error bg-opacity-20 text-error border-error border-opacity-30' };
-        if (available <= 5) return { text: 'Casi llena', class: 'bg-warning bg-opacity-20 text-warning border-warning border-opacity-30' };
-        return { text: 'Disponible', class: 'bg-secondary-500 bg-opacity-20 text-secondary-400 border-secondary-500 border-opacity-30' };
+        if (available === 0) return { text: 'Sin cupos', class: 'bg-error/20 text-error border-error/30' };
+        if (available <= 5) return { text: 'Casi llena', class: 'bg-warning/20 text-warning border-warning/30' };
+        return { text: 'Disponible', class: 'bg-secondary-500/20 text-secondary-400 border-secondary-500/30' };
     }
 
     renderMapPins() {

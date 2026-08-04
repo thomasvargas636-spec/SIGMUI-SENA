@@ -22,7 +22,7 @@
 
   form(method="POST" action="/auth/login" novalidate)
     if errorMessage
-      .bg-red-500.bg-opacity-10.border.border-error.text-error.rounded-lg.py-3.px-4.text-sm.mb-4= errorMessage
+      .bg-red-500/10.border.border-error.text-error.rounded-lg.py-3.px-4.text-sm.mb-4= errorMessage
 
     .mb-6
       label.block.text-xs.font-semibold.tracking-wider.uppercase.text-gray-300.mb-2(for="email") Correo electrónico
