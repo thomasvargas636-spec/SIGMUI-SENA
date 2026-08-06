@@ -158,6 +158,14 @@ app.get("/reservas/cancelar", (req, res) => {
   });
 });
 
+app.get("/reservas/historial", (req, res) => {
+  res.render("pages/reservas/historialView", {
+    title: "Historial de Reservas",
+    user: defaultUser,
+    currentRoute: "historial",
+  });
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
