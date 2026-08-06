@@ -150,6 +150,14 @@ app.get("/api/zones", async (req, res) => {
   }
 });
 
+app.get("/reservas/cancelar", (req, res) => {
+  res.render("pages/reservas/cancelarView", {
+    title: "Cancelación de Reservas",
+    user: defaultUser,
+    currentRoute: "reservas",
+  });
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
