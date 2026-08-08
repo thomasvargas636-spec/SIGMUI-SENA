@@ -8,7 +8,7 @@ block content
       p.text-sm.text-gray-400 Administra permisos, roles y estados de los usuarios del sistema
 
     //- Tarjetas de Resumen
-    .cards.grid.grid-cols-1(class="sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6")
+    .cards.grid.grid-cols-1.gap-4.mb-6(class="sm:grid-cols-2 lg:grid-cols-4")
       .bg-gray-900.border.border-gray-800.rounded-xl.p-5.flex.items-center.gap-4.transition-all.duration-200(class="hover:border-primary-500 hover:-translate-y-0.5")
         .w-12.h-12.rounded-xl.flex.items-center.justify-center.text-xl(class="bg-primary-500/15 text-primary-400") 👥
         div
@@ -35,7 +35,7 @@ block content
 
     //- Filtros y Buscador
     .filtros.flex.flex-col.gap-4.mb-6(class="md:flex-row md:items-center md:justify-between")
-      input#buscador.w-full.bg-gray-900.border.border-gray-800.rounded-xl.px-4.py-2.5.text-sm.text-gray-200.outline-none.transition-all(class="md:w-96 focus:border-primary-500" type="text" placeholder="🔍 Buscar por nombre o correo...")
+      input#buscador.w-full.bg-gray-900.border.border-gray-800.rounded-xl.px-4.text-sm.text-gray-200.outline-none.transition-all(class="py-2.5 md:w-96 focus:border-primary-500" type="text" placeholder="🔍 Buscar por nombre o correo...")
       
       .botones.flex.flex-wrap.gap-2
         button.filtro-btn.active.rounded-full.border.border-primary-500.text-primary-400.text-xs.font-medium.transition-all(class="px-4 py-1.5 bg-primary-500/10" type="button" data-filtro="todos") Todos
@@ -55,7 +55,7 @@ block content
 
       .tabla-body.divide-y.divide-gray-800
 
-    //- VISTA EDITAR (Modal / Seccion)
+    //- VISTA EDITAR
     #vista-editar.oculto.hidden.mt-6
       .bg-gray-900.border.border-gray-800.rounded-2xl.p-6.max-w-lg.mx-auto.shadow-2xl
         .flex.items-center.justify-between.mb-4
