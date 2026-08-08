@@ -166,6 +166,14 @@ app.get("/reservas/historial", (req, res) => {
   });
 });
 
+app.get("/admin/usuarios", (req, res) => {
+  res.render("pages/admin/usuariosView", {
+    title: "Gestión de Usuarios",
+    user: defaultUser,
+    currentRoute: "usuarios",
+  });
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
