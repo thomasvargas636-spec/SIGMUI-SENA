@@ -86,10 +86,17 @@ app.get("/auth/forgot-password", (req, res) => {
   });
 });
 
-// Renderizar la pantalla de verificación de código (HU 02.3)
+// Renderizar la pantalla de (HU 02.3)
 app.get("/auth/verify-code", (req, res) => {
   res.render("pages/auth/verifyCodeView", {
     title: "Verificar código",
+  });
+});
+
+// Renderizar la pantalla de nueva contraseña
+app.get("/auth/new-password", (req, res) => {
+  res.render("pages/auth/newPasswordView", {
+    title: "Nueva Contraseña",
   });
 });
 
