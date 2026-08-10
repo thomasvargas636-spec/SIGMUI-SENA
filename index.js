@@ -65,19 +65,29 @@ app.get("/", (req, res) => {
   res.redirect("/auth/login");
 });
 
+// Renderizar la pantalla de inicio de sesión (HU 02.1)
 app.get("/auth/login", (req, res) => {
   res.render("pages/auth/loginView", {
-    title: "Log In",
+    title: "Iniciar sesión",
   });
 });
 
-// Renderizar la pantalla de registro (HU01)
+// Renderizar la pantalla de registro (HU 01)
 app.get("/auth/register", (req, res) => {
   res.render("pages/auth/registerView", {
     title: "Crear cuenta",
   });
 });
 
+app.get("/auth/forgot-password", (req, res) => {
+  res.render("pages/auth/forgotPasswordView", {
+    title: "Olvidaste tu contraseña",
+  });
+});
+
+
+
+// Procesar el inicio de sesión
 app.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
   
@@ -101,14 +111,39 @@ app.post("/auth/login", async (req, res) => {
       res.redirect("/zonas");
     } else {
       res.render("pages/auth/loginView", {
-        title: "Log In",
+        title: "Iniciar sesión",
         errorMessage: "Credenciales inválidas"
       });
     }
   } catch (error) {
     res.render("pages/auth/loginView", {
-      title: "Log In",
+      title: "Iniciar sesión",
       errorMessage: "Ocurrió un error al iniciar sesión"
+    });
+  }
+});
+
+// Procesar la solicitud de restablecimiento de contraseña (HU 02.2)
+app.post("/auth/forgot-password", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    let user = null;
+    if (sequelize) {
+      user = await User.findOne({ where: { email } });
+    } else {
+      user = mockUsers.find(u => u.email === email);
+    }
+
+    // Respuesta visual provisional
+    res.render("pages/auth/forgotPasswordView", {
+      title: "Olvidaste tu contraseña",
+      successMessage: "Si el correo existe en el sistema, enviamos el enlace de restablecimiento."
+    });
+  } catch (error) {
+    res.render("pages/auth/forgotPasswordView", {
+      title: "Olvidaste tu contraseña",
+      errorMessage: "Ocurrió un error al procesar la solicitud."
     });
   }
 });
