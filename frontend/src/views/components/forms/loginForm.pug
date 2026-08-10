@@ -1,56 +1,37 @@
-//- Login form component
-//- Included from pages/auth/loginView.pug
-//- Expects an optional `errorMessage` local (string)
+form#loginForm(action="/auth/login" method="POST" style="display: flex; flex-direction: column; gap: 18px;")
+  div(style="display: flex; flex-direction: column; gap: 8px;")
+    label(for="email" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #5A6A7E; letter-spacing: 0.8px;") Correo electrónico
+    input#email(
+      type="email" 
+      name="email" 
+      placeholder="usuario@ejemplo.com"
+      required
+      style="width: 100%; padding: 12px; background-color: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-size: 14px; outline: none;"
+    )
+    #email-error.error
 
-.flex.items-center.justify-center.gap-2.mb-8
-  span.w-6.h-6.inline-flex
-    svg.w-full.h-full(viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
-      path(d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z" fill="url(#pinGradient)")
-      text(x="12" y="13" text-anchor="middle" font-size="9" font-weight="700" fill="#0B1120") P
-      defs
-        linearGradient#pinGradient(x1="4" y1="2" x2="20" y2="22")
-          stop(offset="0" stop-color="var(--color-primary-400)")
-          stop(offset="1" stop-color="var(--color-secondary-400)")
-  span.font-heading.font-bold.text-xl.tracking-wide.text-gray-50
-    | PARK
-    span.text-secondary-400 ALIA
+  div(style="display: flex; flex-direction: column; gap: 8px;")
+    div(style="display: flex; justify-content: space-between; align-items: center;")
+      label(for="password" style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #5A6A7E; letter-spacing: 0.8px;") Contraseña
+      a.forgot-link(href="/auth/forgot-password" style="font-size: 11px; color: #1A6FD4; text-decoration: none; font-weight: 500;") ¿Olvide mi contraseña?
+    input#password(
+      type="password" 
+      name="password" 
+      placeholder="********"
+      required
+      style="width: 100%; padding: 12px; background-color: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-size: 14px; outline: none;"
+    )
+    #password-error.error
 
-.bg-gray-900.border.border-gray-700.rounded-2xl.px-6.py-8.shadow-2xl.w-full
-  .mb-8
-    h1.m-0.mb-2.font-heading.font-extrabold.text-3xl.text-gray-50.leading-tight.tracking-tight Iniciar sesión
-    p.m-0.text-sm.text-gray-500 Accede a tu cuenta de forma segura
+  #error-box.alert.alert-danger.hidden(style="font-size: 12px; padding: 12px; border-radius: 8px; text-align: center; background-color: rgba(232, 64, 74, 0.1); border: 1px solid #E8404A; color: #ff7b72;")
+    | Las credenciales no coinciden con ninguna cuenta registrada.
 
-  form(method="POST" action="/auth/login" novalidate)
-    if errorMessage
-      .bg-red-500/10.border.border-error.text-error.rounded-lg.py-3.px-4.text-sm.mb-4= errorMessage
+  div(style="height: 1px; background-color: #1E2A3A; margin: 6px 0;")
 
-    .mb-6
-      label.block.text-xs.font-semibold.tracking-wider.uppercase.text-gray-300.mb-2(for="email") Correo electrónico
-      input.w-full.px-4.py-3.bg-gray-800.border.border-gray-700.rounded-lg.text-gray-50.text-base.font-body.transition-colors.duration-150.placeholder-gray-500(
-        class="focus:outline-none focus:border-primary-400"
-        type="email"
-        id="email"
-        name="email"
-        placeholder="usuario@ejemplo.com"
-        required
-      )
-      span.hidden.text-xs.text-error.mt-1(data-error-for="email")
+  button.btn-primary(
+    type="submit" 
+    style="width: 100%; padding: 12px; background: linear-gradient(135deg, #1A6FD4, #3DBE6C); border: none; border-radius: 8px; color: white; font-weight: 600; font-size: 14px; cursor: pointer;"
+  ) Ingresar
 
-    .mb-6
-      .flex.items-center.justify-between.mb-2
-        label.block.text-xs.font-semibold.tracking-wider.uppercase.text-gray-300.m-0(for="password") Contraseña
-        a.text-xs.text-primary-400.no-underline(class="hover:underline" href="/auth/forgot-password") ¿Olvidé mi contraseña?
-      input.w-full.px-4.py-3.bg-gray-800.border.border-gray-700.rounded-lg.text-gray-50.text-base.font-body.transition-colors.duration-150.placeholder-gray-500(
-        class="focus:outline-none focus:border-primary-400"
-        type="password"
-        id="password"
-        name="password"
-        placeholder="••••••••"
-        required
-        minlength="8"
-      )
-      span.hidden.text-xs.text-error.mt-1(data-error-for="password")
-
-    hr.border-0.border-t.border-gray-700.my-8
-
-    button.w-full.p-3.bg-gradient-to-r.from-primary-500.to-secondary-400.text-gray-50.rounded-lg.text-base.font-semibold.font-body.cursor-pointer.transition-opacity.duration-150(class="hover:opacity-90 disabled:bg-gray-600 disabled:cursor-not-allowed" type="submit") Ingresar
+  #warning-box.alert.alert-warning.hidden(style="font-size: 12px; padding: 12px; border-radius: 8px; text-align: center; background-color: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3); color: #facc15;")
+    | Los campos de correo y contraseña son obligatorios.
