@@ -79,9 +79,17 @@ app.get("/auth/register", (req, res) => {
   });
 });
 
+// Renderizar la pantalla de verificación de código (HU 02.2)
 app.get("/auth/forgot-password", (req, res) => {
   res.render("pages/auth/forgotPasswordView", {
     title: "Olvidaste tu contraseña",
+  });
+});
+
+// Renderizar la pantalla de verificación de código (HU 02.3)
+app.get("/auth/verify-code", (req, res) => {
+  res.render("pages/auth/verifyCodeView", {
+    title: "Verificar código",
   });
 });
 

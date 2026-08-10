@@ -1,0 +1,7 @@
+form#loginForm(action="/auth/verify-code" method="POST")
+    div.field
+        label(for="code") Código de verificación
+        input(type="text" id="code" name="code" placeholder="Ingresa el código recibido" minlength="6" maxlength="6" required)
+        div.error#email-error
+    
+    button.btn-primary(type="submit") Verificar código
