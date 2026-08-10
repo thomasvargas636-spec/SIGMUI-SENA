@@ -4,12 +4,12 @@
 
 nav.h-16.bg-gray-950.border-b.border-gray-800.flex.items-center.justify-between.px-6.flex-shrink-0
   .flex.items-center.gap-4
-    a.no-underline(href="/") 
-      span.font-heading.font-bold.text-xl.tracking-wide.text-gray-50 Parkalia
+    a.no-underline.flex.items-center(href="/") 
+      img.h-8.w-auto.object-contain(src="/img/parkalia.png" alt="Logo Parkalia")
     button.p-2.text-gray-400.transition-colors(class="md:hidden hover:text-gray-50" type="button" aria-label="Toggle sidebar")
-      span.block.w-5.h-0.5.bg-current.mb-1
-      span.block.w-5.h-0.5.bg-current.mb-1
-      span.block.w-5.h-0.5.bg-current
+      span.block(class="w-5 h-0.5 bg-current mb-1")
+      span.block(class="w-5 h-0.5 bg-current mb-1")
+      span.block(class="w-5 h-0.5 bg-current")
 
   .flex.items-center.gap-4
     button.relative.p-2.text-gray-400.transition-colors(class="hover:text-gray-50" type="button" aria-label="Notifications")

@@ -1,0 +1,75 @@
+extends ../../layouts/admin.pug
+
+block content
+  .content(style="padding: 28px; flex: 1;" id="screen-list")
+    .section-header(style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px;")
+      div
+        .section-title(style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #E8EDF5; line-height: 1.2;") Mis Vehículos
+        .section-sub(style="font-size: 13px; color: #5A6A7E; margin-top: 4px;") Gestiona los vehículos registrados en tu cuenta
+      button.btn-primary(type="button" style="display: flex; align-items: center; gap: 8px; padding: 10px 20px; background: linear-gradient(135deg, #1A6FD4, #3DBE6C); border: none; border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 20px rgba(26,111,212,0.25);" id="btn-show-form") ＋ Agregar vehículo
+    
+    .success-msg(style="display: none; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(61,190,108,0.12); border: 1px solid rgba(61,190,108,0.2); border-radius: 8px; font-size: 13px; color: #3DBE6C; margin-bottom: 20px;" id="success-msg" role="status" aria-live="polite")
+
+    .table-card(style="background: #141B27; border: 1px solid #1E2A3A; border-radius: 12px; overflow: hidden;")
+      table(style="width: 100%; border-collapse: collapse;" id="vehicles-table")
+        thead
+          tr(style="background: #0F1520; border-bottom: 1px solid #1E2A3A;")
+            th(style="padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5A6A7E;" scope="col") Placa
+            th(style="padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5A6A7E;" scope="col") Marca
+            th(style="padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5A6A7E;" scope="col") Modelo
+            th(style="padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5A6A7E;" scope="col") Año
+            th(style="padding: 12px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #5A6A7E;" scope="col") Acciones
+        tbody(id="vehicles-body")
+      
+      .empty-state(style="display: none; padding: 48px; text-align: center;" id="empty-state")
+        .empty-icon(style="font-size: 40px; margin-bottom: 14px;") 🚗
+        .empty-title(style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px;") No tienes vehículos registrados
+        .empty-sub(style="font-size: 13px; color: #5A6A7E; margin-bottom: 20px;") Agrega tu primer vehículo para comenzar
+        button.btn-primary(type="button" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: linear-gradient(135deg, #1A6FD4, #3DBE6C); border: none; border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 20px rgba(26,111,212,0.25);" id="btn-empty-add") ＋ Agregar vehículo
+
+  .content(style="display: none; padding: 28px; flex: 1;" id="screen-form")
+    a.back-link(style="display: inline-block; font-size: 13px; color: #1A6FD4; text-decoration: none; margin-bottom: 20px; cursor: pointer;" id="btn-back") ← Volver a Mis Vehículos
+    .form-card(style="background: #141B27; border: 1px solid #1E2A3A; border-radius: 12px; padding: 24px; max-width: 560px;" role="form" aria-labelledby="form-card-title")
+      .form-card-title(style="font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #1E2A3A; display: flex; align-items: center; gap: 8px;")
+        .dot(style="width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #1A6FD4, #3DBE6C); flex-shrink: 0;")
+        span(id="form-card-title") Nuevo vehículo
+      
+      .field(style="margin-bottom: 16px;")
+        label(style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #5A6A7E; margin-bottom: 6px;" for="plate") Placa
+        input(type="text" style="width: 100%; padding: 10px 14px; background: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;" id="plate" placeholder="ej. ABC 123" autocomplete="off" required aria-required="true" aria-describedby="plate-error")
+        .error(style="font-size: 11px; color: #E8404A; margin-top: 5px; min-height: 16px;" id="plate-error" role="alert")
+
+      .field(style="margin-bottom: 16px;")
+        label(style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #5A6A7E; margin-bottom: 6px;" for="brand") Marca
+        input(type="text" style="width: 100%; padding: 10px 14px; background: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;" id="brand" placeholder="ej. Toyota" required aria-required="true" aria-describedby="brand-error")
+        .error(style="font-size: 11px; color: #E8404A; margin-top: 5px; min-height: 16px;" id="brand-error" role="alert")
+
+      .field(style="margin-bottom: 16px;")
+        label(style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #5A6A7E; margin-bottom: 6px;" for="model") Modelo
+        input(type="text" style="width: 100%; padding: 10px 14px; background: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;" id="model" placeholder="ej. Corolla" required aria-required="true" aria-describedby="model-error")
+        .error(style="font-size: 11px; color: #E8404A; margin-top: 5px; min-height: 16px;" id="model-error" role="alert")
+
+      .field(style="margin-bottom: 16px;")
+        label(style="display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #5A6A7E; margin-bottom: 6px;" for="year") Año
+        input(type="number" style="width: 100%; padding: 10px 14px; background: #0F1520; border: 1px solid #1E2A3A; border-radius: 8px; color: #E8EDF5; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;" id="year" placeholder="ej. 2022" min="1900" max="2099" required aria-required="true" aria-describedby="year-error")
+        .error(style="font-size: 11px; color: #E8404A; margin-top: 5px; min-height: 16px;" id="year-error" role="alert")
+
+      .form-actions(style="display: flex; gap: 10px; padding-top: 16px; border-top: 1px solid #1E2A3A; margin-top: 8px;")
+        button.btn-cancel(type="button" style="flex: 1; padding: 10px; background: transparent; border: 1px solid #1E2A3A; border-radius: 8px; color: #5A6A7E; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer;" id="btn-cancel") Cancelar
+        button.btn-cancel.hidden(type="button" style="display: none; flex: 1; padding: 10px; background: transparent; border: 1px solid #1E2A3A; border-radius: 8px; color: #5A6A7E; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer;" id="btn-cancel-edit") Cancelar edición
+        button.btn-save(type="button" style="flex: 2; padding: 10px; background: linear-gradient(135deg, #1A6FD4, #3DBE6C); border: none; border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 16px rgba(26,111,212,0.2);" id="btn-save") Registrar vehículo
+
+  .modal-overlay.hidden(style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 100;" id="modal-delete" role="dialog" aria-modal="true" aria-labelledby="modal-title")
+    .modal-card(style="background: #141B27; border: 1px solid rgba(232,64,74,0.25); border-radius: 16px; padding: 28px; width: 100%; max-width: 420px; display: flex; flex-direction: column;")
+      .modal-icon(style="width: 52px; height: 52px; background: rgba(232,64,74,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px;") 🗑️
+      .modal-title(style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 8px;" id="modal-title") Eliminar vehículo
+      .modal-desc(style="font-size: 13px; color: #5A6A7E; line-height: 1.6; margin-bottom: 14px;") ¿Estás seguro de eliminar este vehículo?
+      .modal-vehicle(style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #0F1520; border-radius: 8px; margin: 0 0 12px; border: 1px solid #1E2A3A;")
+        div 🚗
+        .modal-vehicle-info(style="font-size: 13px;")
+          .modal-vehicle-plate(style="font-family: 'Syne', sans-serif; font-weight: 700; color: #E8404A; font-size: 14px; letter-spacing: 1px;" id="modal-plate")
+          .modal-vehicle-detail(style="font-size: 11px; color: #5A6A7E; margin-top: 2px;" id="modal-detail")
+      .modal-warning(style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: rgba(232,64,74,0.12); border-radius: 8px; font-size: 12px; color: #E8404A; margin-bottom: 20px;") Esta acción no se puede deshacer.
+      .modal-actions(style="display: flex; gap: 10px;")
+        button.btn-modal-cancel(type="button" style="flex: 1; padding: 10px; background: transparent; border: 1px solid #1E2A3A; border-radius: 8px; color: #5A6A7E; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer;" id="btn-cancel-delete") Cancelar
+        button.btn-modal-delete(type="button" style="flex: 1; padding: 10px; background: #E8404A; border: none; border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 16px rgba(232,64,74,0.2);" id="btn-confirm-delete") Eliminar

@@ -100,6 +100,15 @@ app.get("/auth/new-password", (req, res) => {
   });
 });
 
+// Renderizar la pantalla de Mis Vehículos
+app.get('/vehicles', (req, res) => {
+  res.render('pages/vehicles/vehiclesView', { 
+    title: 'Mis Vehículos',
+    user: defaultUser,
+    currentRoute: 'vehicles'
+  });
+});
+
 
 
 // Procesar el inicio de sesión
