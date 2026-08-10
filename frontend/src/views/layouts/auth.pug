@@ -1,17 +1,15 @@
-//- Minimal layout for authentication pages (login, register, password reset)
-//- No navbar/sidebar — just a centered card on a full-height background
-//- Expects a `title` local (string)
-
 doctype html
-html(lang="en")
+html(lang="es" class="h-full bg-[#080C10]")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title= title ? `${title} · Parkalia` : "Parkalia"
+    title PARKALIA - Registro
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet")
     link(rel="stylesheet" href="/css/output.css")
-
-  body.min-h-screen.flex.items-center.justify-center.bg-gray-950.font-body
-    .w-full.max-w-md.p-8
-      block content
-
-    script(type="module" src="/js/main.js")
+    style.
+      body { font-family: 'DM Sans', sans-serif; }
+      .font-syne { font-family: 'Syne', sans-serif; }
+  body(class="h-full w-full m-0 p-0 text-[#E8EDF5] antialiased overflow-x-hidden bg-[#080C10]")
+    block content

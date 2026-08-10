@@ -11,11 +11,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
-// Middleware
+// Middleware de peticiones
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Mock data for when DB is not configured
+// Mock data cuando la base de datos no está configurada
 let mockZones = [
   { id: 'centro-a', name: 'Zona Centro A', shortName: 'Centro A', address: 'Calle 15 #8-20, Centro', price: 2500, availableSpots: 14, totalSpots: 20, schedule: '6:00 AM — 10:00 PM', positionTop: '22%', positionLeft: '18%' },
   { id: 'norte-b', name: 'Zona Norte B', shortName: 'Norte B', address: 'Carrera 10 #24-45, Norte', price: 3000, availableSpots: 3, totalSpots: 20, schedule: '7:00 AM — 9:00 PM', positionTop: '18%', positionLeft: '58%' },
@@ -26,11 +26,10 @@ let mockUsers = [
   { email: 'usuario@ejemplo.com', password: 'password123', name: 'Thom Vargas', role: 'Ciudadano' }
 ];
 
-// Sync DB if configured
+// Sincronización de Base de Datos
 if (sequelize) {
   sequelize.sync().then(async () => {
     console.log("Database connected and synced.");
-    // Optional: Seed zones
     const count = await Zone.count();
     if (count === 0) {
       await Zone.bulkCreate(mockZones);
@@ -42,19 +41,25 @@ if (sequelize) {
   console.log("Running without database using mock data");
 }
 
-// View engine setup
+// Configuración del motor de plantillas (Pug)
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "frontend/src/views"));
 
-// Static assets (css, js, data, images)
+// Archivos estáticos (CSS, JS, Imágenes)
+app.use(express.static(path.join(__dirname, "frontend/public")));
 app.use(express.static(path.join(__dirname, "frontend/src")));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Default locals shared by all admin pages, until real auth exists
+// Usuario predeterminado
 const defaultUser = {
   name: "Thom Vargas",
   role: "Administrator",
   avatarUrl: "/img/default-avatar.png",
 };
+
+// ==========================================
+// RUTAS DE AUTENTICACIÓN
+// ==========================================
 
 app.get("/", (req, res) => {
   res.redirect("/auth/login");
@@ -66,40 +71,10 @@ app.get("/auth/login", (req, res) => {
   });
 });
 
-app.get("/dashboard", (req, res) => {
-  res.redirect("/zonas");
-});
-
-app.get("/zonas", (req, res) => {
-  res.render("pages/zones/zonesView", {
-    title: "Consulta de Zonas",
-    user: defaultUser,
-    currentRoute: "zonas",
-  });
-});
-
-app.get("/pagos", async (req, res) => {
-  const zoneId = req.query.zoneId || 'centro-a';
-  let zone = null;
-  if (sequelize) {
-    try {
-      zone = await Zone.findByPk(zoneId);
-    } catch(e) {
-      console.error(e);
-    }
-  } else {
-    zone = mockZones.find(z => z.id === zoneId);
-  }
-  
-  if (!zone) {
-    return res.redirect('/zonas');
-  }
-
-  res.render("pages/pagos/pagosView", {
-    title: "Realizar Pago",
-    user: defaultUser,
-    currentRoute: "pagos",
-    zone: zone
+// Renderizar la pantalla de registro (HU01)
+app.get("/auth/register", (req, res) => {
+  res.render("pages/auth/registerView", {
+    title: "Crear cuenta",
   });
 });
 
@@ -136,6 +111,74 @@ app.post("/auth/login", async (req, res) => {
       errorMessage: "Ocurrió un error al iniciar sesión"
     });
   }
+});
+
+// API para procesar el registro de usuario
+app.post("/api/auth/register", async (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+
+  try {
+    if (sequelize) {
+      const existingUser = await User.findOne({ where: { email } });
+      if (existingUser) {
+        return res.status(400).json({ success: false, message: "El correo ya existe." });
+      }
+
+      await User.create({
+        name: `${firstname} ${lastname}`,
+        email,
+        password,
+        role: "Ciudadano"
+      });
+    } else {
+      mockUsers.push({ email, password, name: `${firstname} ${lastname}`, role: "Ciudadano" });
+    }
+
+    return res.status(201).json({ success: true, message: "Usuario creado exitosamente" });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Error en servidor" });
+  }
+});
+
+// ==========================================
+// RUTAS DE LA APLICACIÓN
+// ==========================================
+
+app.get("/dashboard", (req, res) => {
+  res.redirect("/zonas");
+});
+
+app.get("/zonas", (req, res) => {
+  res.render("pages/zones/zonesView", {
+    title: "Consulta de Zonas",
+    user: defaultUser,
+    currentRoute: "zonas",
+  });
+});
+
+app.get("/pagos", async (req, res) => {
+  const zoneId = req.query.zoneId || 'centro-a';
+  let zone = null;
+  if (sequelize) {
+    try {
+      zone = await Zone.findByPk(zoneId);
+    } catch(e) {
+      console.error(e);
+    }
+  } else {
+    zone = mockZones.find(z => z.id === zoneId);
+  }
+  
+  if (!zone) {
+    return res.redirect('/zonas');
+  }
+
+  res.render("pages/pagos/pagosView", {
+    title: "Realizar Pago",
+    user: defaultUser,
+    currentRoute: "pagos",
+    zone: zone
+  });
 });
 
 app.get("/api/zones", async (req, res) => {

@@ -1,0 +1,26 @@
+extends ../../layouts/auth.pug
+
+block content
+  div(class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#080C10] overflow-hidden px-4 py-8 select-none")
+
+    // Círculo Azul (Izquierda)
+    div(class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-[85%] w-[640px] h-[640px] lg:w-[700px] lg:h-[700px] rounded-full bg-[#0d223a] pointer-events-none z-0")
+
+    // Círculo Verde (Derecha)
+    div(class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-[15%] w-[640px] h-[640px] lg:w-[700px] lg:h-[700px] rounded-full bg-[#0a2a1c] pointer-events-none z-0")
+
+    // Contenido Central
+    div(class="relative z-10 w-full flex flex-col items-center max-w-[480px]")
+      
+      // Logo Parkalia (CAMBIO: Se reemplazó el SVG por la imagen PNG)
+      div(class="mb-7 flex justify-center")
+        img(
+          src="/img/parkalia.png" 
+          alt="PARKALIA" 
+          class="h-11 w-auto object-contain"
+        )
+
+      // Formulario
+      include ../../components/forms/registerForm.pug
+
+    script(src="/js/pages/register.js")

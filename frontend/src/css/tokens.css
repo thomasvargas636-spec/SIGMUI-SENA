@@ -1,0 +1,114 @@
+/**
+ * tokens.css
+ * ------------------------------------------------------------------
+ * ARCHIVO NUEVO — colócalo en: frontend/src/css/tokens.css
+ *
+ * Este archivo llena de VALORES REALES todas las variables semánticas
+ * que el bloque @theme de main.css espera (--primary-500, --space-4,
+ * --radius-lg, etc.). Antes esas variables no estaban definidas en
+ * ningún :root, por eso las clases de Tailwind (bg-primary-500, p-4...)
+ * no pintaban nada.
+ *
+ * La paleta de color (azul/verde) sale directo de hu01-style.css para
+ * que la vista migrada se vea igual a la HU01 original.
+ * ------------------------------------------------------------------
+ */
+
+:root {
+  /* ============ COLOR — PRIMARY (azul de marca, #1A6FD4) ============ */
+  --primary-50:  #EAF2FD;
+  --primary-100: #D0E3FA;
+  --primary-200: #A3C7F5;
+  --primary-300: #6FA5EE;
+  --primary-400: #3D84E4;
+  --primary-500: #1A6FD4; /* = --blue en hu01-style.css */
+  --primary-600: #1459AC;
+  --primary-700: #114685;
+  --primary-800: #0F395F;
+  --primary-900: #0C2C48;
+  --primary-950: #081C30;
+
+  /* ============ COLOR — SECONDARY (verde de marca, #3DBE6C) ============ */
+  --secondary-50:  #EAFBF0;
+  --secondary-100: #CDF5DC;
+  --secondary-200: #9EE9BB;
+  --secondary-300: #6CD89B;
+  --secondary-400: #4CC77F;
+  --secondary-500: #3DBE6C; /* = --green en hu01-style.css */
+  --secondary-600: #2E9C56;
+  --secondary-700: #237A43;
+  --secondary-800: #1C5F35;
+  --secondary-900: #164A2A;
+  --secondary-950: #0D2E1A;
+
+  /* ============ COLOR — GRAY (fondo/tarjetas/bordes/texto) ============ */
+  /* Calibrado a partir de --bg, --surface, --card, --border, --text,
+     --muted de hu01-style.css para que el dark theme se vea igual.   */
+  --gray-50:  #E8EDF5; /* = --text  en hu01 */
+  --gray-100: #DEE4EC;
+  --gray-200: #C7CFDA;
+  --gray-300: #A9B4C4;
+  --gray-400: #7C8AA0;
+  --gray-500: #5A6A7E; /* = --muted en hu01 */
+  --gray-600: #3B4A5C;
+  --gray-700: #1E2A3A; /* = --border en hu01 */
+  --gray-800: #1B2433;
+  --gray-900: #141B27; /* = --card en hu01 */
+  --gray-950: #080C10; /* = --bg   en hu01 */
+
+  /* ============ COLOR — SEMÁNTICOS ============ */
+  --color-success: #3DBE6C; /* = secondary-500 */
+  --color-warning: #F2B705; /* No existía en hu01: ámbar estándar, ajústalo si SENA define otro */
+  --color-error:   #E8404A; /* = --danger en hu01 */
+  --color-info:    #3D84E4; /* = primary-400 */
+
+  /* Alias usados directo por algunos .css existentes (deleteModal.css, zoneForm.css) */
+  --danger:      #E8404A;
+  --danger-soft: rgba(232, 64, 74, 0.12);
+
+  /* ============ TIPOGRAFÍA ============ */
+  --font-heading: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --fs-xs:  0.75rem;
+  --fs-sm:  0.875rem;
+  --fs-base: 1rem;
+  --fs-lg:  1.125rem;
+  --fs-2xl: 1.5rem;
+
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* ============ ESPACIADO (coincide con la escala default de Tailwind) ============ */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+
+  /* ============ RADIOS ============ */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-full: 9999px;
+
+  /* ============ SUPERFICIES / TEXTO SEMÁNTICO (usados por loginForm.css) ============ */
+  --bg-base:         var(--gray-950);
+  --bg-surface:      var(--gray-900);
+  --bg-surface-alt:  var(--gray-800);
+  --border-color:    var(--gray-700);
+  --text-primary:    var(--gray-50);
+  --text-secondary:  var(--gray-300);
+  --text-muted:      var(--gray-500);
+  --text-on-primary: #FFFFFF;
+
+  /* ============ TRANSICIONES / Z-INDEX (usados por navbar/sidebar) ============ */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --z-navbar:  40;
+  --z-sidebar: 30;
+}
